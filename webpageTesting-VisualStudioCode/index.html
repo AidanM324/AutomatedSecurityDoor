@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Automated Security</title>
+
+    <link rel="icon" href="PadLock.jpg" type="image">
+    <link rel="stylesheet" href="styles.css">
+
+    <script>
+        function checkPasswordRFID() {
+            
+            var password = document.getElementById("password").value;
+
+        
+            if (password === "rfid") {
+                
+                window.location.href = "RFID.html" ;
+            } else {
+                alert("Incorrect password. Please try again.");
+            }
+        }
+    </script>
+
+<script>
+    function checkAdminPassword1() {
+        // Get the password entered by the user
+        var password = document.getElementById("admin").value;
+
+        // Check if the password is correct 
+        if (password === "admin") {
+            // Redirect to another page if the password is correct
+            window.location.href = "Admin.html" ;
+        } else {
+            // Display an error message if the password is incorrect
+            alert("Incorrect Admin password. Please try again.");
+        }
+    }
+</script>
+
+<script>
+    function checkCredentials() {
+     //   var storedEmail = localStorage.getItem("userEmail");
+     //   var enteredEmail = document.getElementById("email").value;
+     //   var password = document.getElementById("password").value;
+
+      //  if (storedEmail === enteredEmail && password === "password") {
+      //      window.location.href = "DHT11.html";
+      //  } else {
+     //       alert("Invalid email or password. Please try again.");
+    //    } 
+        var storedEmails = JSON.parse(localStorage.getItem("userEmails")) || [];
+        var storedPasswords = JSON.parse(localStorage.getItem("userPasswords")) || [];
+        var enteredEmail = document.getElementById("email").value;
+        var enteredPassword = document.getElementById("password").value;
+
+        if (storedEmails.includes(enteredEmail) && storedPasswords.includes(enteredPassword)) {
+            window.location.href = "DHT11.html";
+        } else {
+            alert("Invalid email or password. Please try again.");
+        }
+    }
+</script>
+
+</head>
+<body>
+    <br>
+    <div id="logo-div">
+        <h3> Aidan Malone </h3> 
+        <h5>Atlantic Technological University</h5>
+    </div>
+        <hr>
+    <div id="main1-div" class="clearfix">
+
+        <div id="image-div">
+            <img src="SecurityDoor.jpg" width="400" height="550" border="1">
+        </div>
+
+        <div id="intro-div"><h5 class="tools"> THE NEW TOOLS </h5>
+            <h1>Automated<br>Security<br>Door<br><br></h1>
+            
+        </div>
+        
+        <div id="header-div">
+            <p>This is the access page for my IOT Automated Security Door
+            <br>Password and Login details required, new RFID tag issued to new sign ups.
+            <hr>
+            <br>
+
+            <h3><b><i><u>List of Operations</u></i></b></h3>
+
+            <ul class="tools" type="square">
+                <br>
+                <li>User Login</li>
+                <br>
+                <li>User Sign Up</li>
+                <br>
+                <li>DHT11 Access</li>
+                <br>
+                <li>RFID Tag Issue</li>
+                <br>
+            
+            </ul>
+</div>
+
+    </div>
+    <hr>
+    
+    <div id="main2-div" class="clearfix">
+        <div id="textarea-div">
+            <h1 style="font-family: 'Calibri'"><u>Options</u></h1>
+        </div>
+        <div id="Box1-div"> 
+            <h4> Enter Password Here to gain access to DHT11 Livefeed </h4>
+            <form>
+                <label for="email">Email : </label>
+                <input type="email" class="curve" id="email" required>
+                <br>
+                <label for="password">Password:</label>
+                <input type="password" class="curve" id="password" required>
+                <br>
+                <input type="button" class="curve" value="Submit"  onclick="checkCredentials()">
+            </form>
+        </div>
+
+        <div id="Box2-div">
+            <h4>Sign Up.</h4>
+            <form>
+                <label for="password">Enter Password:</label>
+                <input type="password" class="curve" id="admin" name="admin" required>
+                <br>
+                <input type="button" class="curve" value="Submit" onclick="checkAdminPassword1()">
+            </form>
+            <hr>
+            <hr>
+            <h5>RFID Tag Registor.</h5>
+            <form>
+                <label for="password">Enter Password:</label>
+                <input type="password" class="curve" id="rfid" name="rfid" required>
+                <br>
+                <input type="button" class="curve" value="Submit" onclick="checkPasswordRFID()">
+            </form>
+        </div>
+
+    </div>
+    <p style="font-size: 10px;">note: accounts must be created before login can occur. </p>
+<hr>
+    <div id="footer-div"> 
+        &copy;
+    </div>
+</body>
+</html>

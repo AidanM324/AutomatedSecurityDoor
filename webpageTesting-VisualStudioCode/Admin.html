@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Sign Up</title>
+
+    <link rel="icon" href="PadLock.jpg" type="image">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <div id="logo-div">
+        <h3> Atlantic Technological University </h3> 
+    </div>
+        <hr>
+    
+    <div id="textarea-div"> 
+        <h1><b>Sign Up</b> Form</h1>
+    </div>
+
+    <div id="admin-div" class="clearfix">
+
+        <div id="adminimage-div">
+            <img src="admin.png" width="400" height="550" border="1">
+        </div>
+
+        <div id="BoxAdmin-div"> 
+            <h5 class="tools"> WELCOME </h5>
+            <h2 style="font-family: 'Calibri'">  Hello, Friend!<br></h2>
+            <br>
+            
+            <form>
+                <label for="name" style="font-family: 'Calibri'" style="color: 'purple'">Name:</label>
+                <input type="text" class="curve" id="name" required>
+                <br>
+                <br>
+                <label for="email">Email:</label>
+                <input type="email" class="curve" id="email" required>
+                <br>
+                <br>
+                <label for="password" >Password:</label>
+                <input type="password" class="curve" id="password" required>
+                <br>
+                <br>
+                <input type="button" class="curve" value="Create Account" onclick="storeUserData()">
+            </form>
+
+            <script>
+                function storeUserData() {
+                    var name = document.getElementById("name").value;
+                    var email = document.getElementById("email").value;
+                    var password = document.getElementById("password").value;
+            
+                    // Store the user's email in Local Storage
+                   // localStorage.setItem("userEmail", email);
+                    //localStorage.setItem("userName", name);
+
+                     // Retrieve existing emails from Local Storage
+        var storedEmails = JSON.parse(localStorage.getItem("userEmails")) || [];
+        var storedPasswords = JSON.parse(localStorage.getItem("userPasswords")) || [];
+
+// Add the new email to the array
+storedEmails.push(email);
+storedPasswords.push(password);
+
+// Store the updated array back in Local Storage
+localStorage.setItem("userEmails", JSON.stringify(storedEmails));
+localStorage.setItem("userPasswords", JSON.stringify(storedPasswords));
+            
+                    // Redirect the user to the password entry page
+                    window.location.href = "index.html";
+                }
+            </script>
+        </div>
+    </div>
+<hr>
+    <div id="footer-div"> 
+        &copy;
+    </div>
+</body>
+</html>
